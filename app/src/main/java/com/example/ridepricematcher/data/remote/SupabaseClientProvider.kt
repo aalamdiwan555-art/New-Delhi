@@ -1,13 +1,13 @@
 package com.example.ridepricematcher.data.remote
 
 import com.example.ridepricematcher.BuildConfig
-import io.github.jan_tennert.supabase.SupabaseClient
-import io.github.jan_tennert.supabase.createSupabaseClient
-import io.github.jan_tennert.supabase.auth.Auth
-import io.github.jan_tennert.supabase.auth.auth
-import io.github.jan_tennert.supabase.postgrest.Postgrest
-import io.github.jan_tennert.supabase.postgrest.postgrest
-import io.github.jan_tennert.supabase.realtime.Realtime
+import io.github.jan.supabase.SupabaseClient
+import io.github.jan.supabase.createSupabaseClient
+import io.github.jan.supabase.auth.Auth
+import io.github.jan.supabase.auth.auth
+import io.github.jan.supabase.postgrest.Postgrest
+import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.realtime.Realtime
 import kotlinx.serialization.json.Json
 
 object SupabaseClientProvider {
