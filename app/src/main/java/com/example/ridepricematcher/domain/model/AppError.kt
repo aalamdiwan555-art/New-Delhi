@@ -4,7 +4,7 @@ sealed class AppError(
     val category: String,
     val userMessage: String,
     val technicalMessage: String
-) {
+) : Exception(technicalMessage) {
     class Network(userMessage: String, technicalMessage: String) :
         AppError("NETWORK", userMessage, technicalMessage)
 
