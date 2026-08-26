@@ -39,6 +39,12 @@ class HomeViewModel : ViewModel() {
 
     init {
         loadHomeData()
+        // Start collecting languages separately (cold Flow, never ends)
+        viewModelScope.launch {
+            langRepo.getEnabledLanguages().collect { list ->
+                _languages.value = list
+            }
+        }
     }
 
     fun loadHomeData() {
@@ -49,8 +55,9 @@ class HomeViewModel : ViewModel() {
                 return@launch
             }
 
-            // Load profile
+            // Refresh session with error handling
             authRepo.refreshSession()
+                .onFailure { _error.value = it as? AppError }
 
             // Load entitlement (server-authoritative)
             entitlementRepo.getEntitlement(userId)
@@ -65,13 +72,8 @@ class HomeViewModel : ViewModel() {
             entitlementRepo.getAdRewardCount(userId)
                 .onSuccess { _adProgress.value = it % 20 }
 
-            // Sync languages
+            // Sync languages from server (does not block on collect)
             langRepo.syncLanguages()
-                .onSuccess {
-                    langRepo.getEnabledLanguages().collect { list ->
-                        _languages.value = list
-                    }
-                }
 
             _isLoading.value = false
         }
