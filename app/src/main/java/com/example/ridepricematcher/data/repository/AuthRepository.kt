@@ -3,9 +3,9 @@ package com.example.ridepricematcher.data.repository
 import com.example.ridepricematcher.data.remote.SupabaseClientProvider
 import com.example.ridepricematcher.domain.model.AppError
 import com.example.ridepricematcher.domain.model.UserProfile
-import io.github.jan_tennert.supabase.auth.providers.Email
-import io.github.jan_tennert.supabase.auth.user.UserInfo
-import io.github.jan_tennert.supabase.postgrest.query.Columns
+import io.github.jan.supabase.auth.providers.Email
+import io.github.jan.supabase.auth.user.UserInfo
+import io.github.jan.supabase.postgrest.query.Columns
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.buildJsonObject
